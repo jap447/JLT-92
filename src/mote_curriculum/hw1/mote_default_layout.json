@@ -1,0 +1,227 @@
+{
+  "configById": {
+    "3D!18i6zy7": {
+      "layers": {
+        "fb0d8dcd-695b-4799-8b1e-45bc953bed01": {
+          "visible": true,
+          "frameLocked": true,
+          "label": "Grid",
+          "instanceId": "fb0d8dcd-695b-4799-8b1e-45bc953bed01",
+          "layerId": "foxglove.Grid",
+          "divisions": 100,
+          "lineWidth": 1,
+          "color": "#248eff69",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "order": 1,
+          "size": 10
+        }
+      },
+      "cameraState": {
+        "distance": 4.162438067026649,
+        "perspective": true,
+        "phi": 43.87861325376526,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          -0.02188912232345259,
+          -0.2137899418899851,
+          6.766402373512464e-17
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 138.44719942244996,
+        "fovy": 45,
+        "near": 0.1,
+        "far": 5000,
+        "logDepth": false
+      },
+      "followMode": "follow-none",
+      "scene": {
+        "labelScaleFactor": 0.1,
+        "meshUpAxis": "z_up",
+        "enableStats": true,
+        "transforms": {
+          "labelSize": 0.2,
+          "enablePreloading": true,
+          "editable": false,
+          "showLabel": true,
+          "axisSize": 0.06
+        },
+        "syncCamera": true,
+        "ignoreColladaUpAxis": false,
+        "backgroundColor": "#141414"
+      },
+      "transforms": {
+        "frame:base_link": {
+          "visible": false
+        },
+        "frame:robot_body": {
+          "visible": false
+        },
+        "frame:wheel": {
+          "visible": false
+        },
+        "frame:wheel_2": {
+          "visible": false
+        },
+        "frame:lidar_frame": {
+          "visible": false
+        },
+        "frame:wheel_left": {
+          "visible": false
+        },
+        "frame:wheel_right": {
+          "visible": false
+        },
+        "frame:lidar_fram": {
+          "visible": false
+        },
+        "frame:lidar": {
+          "visible": false
+        },
+        "frame:odom": {
+          "visible": false
+        },
+        "frame:map": {
+          "visible": false
+        },
+        "frame:base_footprint": {
+          "visible": false
+        }
+      },
+      "topics": {
+        "/lrr_lidar_scan": {
+          "visible": true,
+          "colorField": "range",
+          "colorMode": "colormap",
+          "colorMap": "rainbow",
+          "decayTime": 0.45,
+          "minValue": 0,
+          "maxValue": 5,
+          "pointSize": 3
+        },
+        "/camera_info": {
+          "visible": false
+        },
+        "/camera": {
+          "visible": false,
+          "cameraInfoTopic": "/camera_info"
+        },
+        "/robot_description": {
+          "displayMode": "auto",
+          "fallbackColor": "#ffffff",
+          "visible": true
+        },
+        "/scan": {
+          "visible": true,
+          "colorField": "range",
+          "colorMode": "colormap",
+          "colorMap": "rainbow",
+          "decayTime": 0.1,
+          "minValue": 0.1,
+          "maxValue": 8,
+          "pointSize": 3
+        },
+        "/move_base_simple/goal": {
+          "visible": true
+        },
+        "/initialpose": {
+          "visible": true
+        },
+        "/set_pose": {
+          "visible": false
+        },
+        "/map": {
+          "visible": true,
+          "frameLocked": false,
+          "colorMode": "map",
+          "unknownColor": "#000000ff",
+          "minColor": "#888888ff"
+        },
+        "/local_costmap/costmap": {
+          "visible": false,
+          "frameLocked": false,
+          "colorMode": "costmap"
+        },
+        "/goal_pose": {
+          "visible": false
+        },
+        "/transformed_global_plan": {
+          "visible": false
+        },
+        "/local_plan": {
+          "visible": false
+        },
+        "/cost_cloud": {
+          "visible": false,
+          "decayTime": 1.5
+        },
+        "/slam_toolbox/graph_visualization": {
+          "visible": false
+        },
+        "/global_costmap/published_footprint": {
+          "visible": false
+        },
+        "/local_costmap/published_footprint": {
+          "visible": false
+        },
+        "/slam_toolbox/scan_visualization": {
+          "visible": true,
+          "decayTime": 282.725,
+          "colorMode": "colormap",
+          "pointSize": 5
+        },
+        "/global_costmap/costmap": {
+          "visible": true,
+          "colorMode": "costmap"
+        },
+        "/local_costmap/clearing_endpoints": {
+          "visible": false,
+          "colorField": "z",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/pose": {
+          "visible": false
+        },
+        "param:/robot_description": {
+          "visible": true
+        }
+      },
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "imageMode": {},
+      "followTf": "base_link",
+      "synchronize": false
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": "3D!18i6zy7"
+}

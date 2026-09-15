@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="hw1" type="prime_number" name="prime_number">
+    <param name="test_number" value="7.0" />
+    <param name="output_topic" value="/hw1/prime_number_output" />
+  </node>
+  <test test-name="test_prime_number_small" pkg="hw1" type="test_prime_number_small.py"/>
+</launch>

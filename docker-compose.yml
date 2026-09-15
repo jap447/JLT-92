@@ -1,0 +1,16 @@
+services:
+  mote:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mote-curriculum
+    pull_policy: always
+    ports:
+      - "8765:8765"   # Foxglove Bridge WebSocket (connect Foxglove Studio to ws://<host>:8765)
+      - "11311:11311" # ROS Master URI (allows host-side ros CLI tools to connect)
+    environment:
+      # Flush Python (roslaunch/spawner) stdout immediately so docker logs shows output
+      PYTHONUNBUFFERED: "1"
+    tty: true # Prevent immediate exit when running with dev containers
+    volumes:
+      - ./src/mote_curriculum/:/catkin_ws/src/mote_curriculum

@@ -1,0 +1,17 @@
+{
+    "name": "Mote curriculum workspace",
+    "service": "mote",
+    "dockerComposeFile": "../docker-compose.yml",
+    "workspaceFolder": "/catkin_ws",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.debugpy",
+                "ms-python.python",
+                "ms-iot.vscode-ros",
+                "ms-python.autopep8",
+                "ms-python.black-formatter"
+            ]
+        }
+    }
+}

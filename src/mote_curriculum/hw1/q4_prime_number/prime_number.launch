@@ -1,0 +1,55 @@
+<!-- You need to wrap all content inside the launch tag -->
+<launch>
+    <!--
+        ROS launch files accept arguments using the arg tag.
+        It allows you to pass arguments in from the command
+        line (or from other launch files)
+    -->
+    <arg name="input_number" default="7" />
+    <arg name="prime_number_output_topic" default="/hw1/prime_number_output" />
+    <arg name="launch_subscriber" default="true" />
+    <!--
+        To change the argument at run time from the command line
+        $ roslaunch hw1 prime_number.launch input_number:=1
+    -->
+
+    <!--
+        The node tag denotes a single ROS node to be launched.
+        It needs three attributes:
+           pkg specifies where to find the executable for the node
+           type specifies the name of the executable
+           name specifies the name of the node, so other nodes can refer to your node
+    -->
+    <node pkg="hw1" type="prime_number" name="prime_number" output="screen">
+        <!--
+            Define the parameters for the node using the param tag
+            param is different from arg: args are only used by roslaunch
+            to allow the user to provide custom values to the launch file,
+            params become available to the ROS system once it's running.
+            It is often convenient to use the same names for args and
+            params that hold the same value. We use different names here
+            to highlight their differences.
+        -->
+        <param name="output_topic" value="$(arg prime_number_output_topic)" />
+        <!--
+            Create a ROS parameter for the input number,
+            using the launch file argument from above.
+        -->
+        <!-- BEGIN QUESTION 4.3 -->
+        <!-- **REPLACE THIS LINE** -->
+        <!-- END QUESTION 4.3 -->
+
+    </node>
+
+    <!--
+        Launch your subscriber node alongside the publisher above.
+        It just needs to know which topic to subscribe to (same topic
+        the publisher publishes to).
+    -->
+    <group if="$(arg launch_subscriber)">
+        <!-- BEGIN QUESTION 4.4 -->
+        <!-- **REPLACE THIS LINE** -->
+        <!-- END QUESTION 4.4 -->
+    </group>
+
+</launch>

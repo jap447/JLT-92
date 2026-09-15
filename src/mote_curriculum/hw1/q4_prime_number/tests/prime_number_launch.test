@@ -1,0 +1,6 @@
+<launch>
+  <test test-name="test_prime_number_launch"
+        pkg="hw1"
+        type="test_prime_number_launch.py"
+        time-limit="30" />
+</launch>
