@@ -36,7 +36,7 @@
             using the launch file argument from above.
         -->
         <!-- BEGIN QUESTION 4.3 -->
-        <!-- **REPLACE THIS LINE** -->
+        <param name = "test_number" value = "$(arg input_number)" />
         <!-- END QUESTION 4.3 -->
 
     </node>
@@ -48,7 +48,9 @@
     -->
     <group if="$(arg launch_subscriber)">
         <!-- BEGIN QUESTION 4.4 -->
-        <!-- **REPLACE THIS LINE** -->
+        <node pkg="hw1" type = "prime_number_subscriber" name = "prime_number_subscriber" output = "screen">
+        <param name = "output_topic" value = "$(arg prime_number_output_topic)" />
+        </node>
         <!-- END QUESTION 4.4 -->
     </group>
 

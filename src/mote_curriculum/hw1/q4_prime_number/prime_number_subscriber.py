@@ -17,7 +17,7 @@ class PrimeNumberSubscriber:
         # Create a subscriber. Function signature:
         # rospy.Subscriber(topic_name, msg_type, callback_function)
         # BEGIN QUESTION 4.4
-        "*** REPLACE THIS LINE ***"
+        rospy.Subscriber(prime_topic, Bool, self.prime_output_callback)
         # END QUESTION 4.4
 
     def prime_output_callback(self, message):
@@ -30,7 +30,7 @@ class PrimeNumberSubscriber:
         Store the received message in self.storage.
         '''
         # BEGIN QUESTION 4.4
-        "*** REPLACE THIS LINE ***"
+        self.storage.append(message.data)
         # END QUESTION 4.4
         
         if self.size is not None and len(self.storage) >= self.size:
