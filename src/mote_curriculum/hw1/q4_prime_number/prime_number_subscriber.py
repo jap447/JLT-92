@@ -17,7 +17,7 @@ class PrimeNumberSubscriber:
         # Create a subscriber. Function signature:
         # rospy.Subscriber(topic_name, msg_type, callback_function)
         # BEGIN QUESTION 4.4
-        rospy.Subscriber(prime_topic, Bool, self.prime_output_callback)
+        self.subscriber = rospy.Subscriber(prime_topic, Bool, self.prime_output_callback)
         # END QUESTION 4.4
 
     def prime_output_callback(self, message):
