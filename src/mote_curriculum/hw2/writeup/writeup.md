@@ -20,9 +20,38 @@ If you prefer to write out your work, you can include it in an image as follows:
 ![image description](./image_path.png)
 -->
 
+Linear velocity:
+$$v = \frac{v_r + v_l}{2}$$
+
+Angular velocity:
+$$\omega = \frac{v_r - v_l}{b}$$
+
+$$2v = v_r + v_l$$
+$$b\omega = v_r - v_l$$
+
+Solving for $v_r$:
+$$v_l = 2v - v_r$$
+$$b\omega = v_r - 2v + v_r$$
+$$ v_r - v = \frac{b\omega}{2}$$
+$$\boxed{v_r = \frac{b\omega}{2} + v}$$
+
+Substituting:
+$$v_l = 2v - \frac{b\omega}{2} - v$$
+$$\boxed{v_l = v - \frac{b\omega}{2}}$$
+
 **Q1.2:**
 
+$$\dot{\phi} = \frac{v}{r} = \frac{2v}{d}$$
+$$\boxed{\dot{\phi}_l = \frac{2v_l}{d}}$$
+$$\boxed{\dot{\phi}_r = \frac{2v_r}{d}}$$
+
 **Q1.3:** 
+
+Linear velocity:
+$$\boxed{v = \frac{v_r + v_l}{2}}$$
+
+Angular velocity:
+$$\boxed{\omega = \frac{v_r - v_l}{b}}$$
 
 ## Q2. Inverse Kinematics (20 pts)
 
