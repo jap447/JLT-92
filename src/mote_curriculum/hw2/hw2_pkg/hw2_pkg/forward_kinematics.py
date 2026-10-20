@@ -43,15 +43,22 @@ class forward_kin:
         # your equations may be expecting m/s, you'll need to do that conversion
 
         # calculate linear and angular velocity, then ...
-
+        wheel_radius = WHEEL_DIAMETER / 2
+        v_left = v_left * wheel_radius
+        v_right = v_right * wheel_radius
+        linear_velocity = (v_right + v_left) / 2
+        angular_velocity = (v_right - v_left) / WHEEL_SEPARATION
         # ... create a TwistStamped message, then ...
-
+        message = TwistStamped()
         # ... update the message values, then ...
-
+        message.twist.linear.x = linear_velocity
+        message.twist.angular.z = angular_velocity
         # ... update the message header, then ...
-
+        message.header = Header()
+        message.header.stamp = rospy.Time.now()
+        message.header.frame_id = "message"
         # ... publish the message using self.twist_publisher
-        
+        self.twist_publisher.publish(message)
         """ 
         QUESTION 3.1 ENDS
         """
