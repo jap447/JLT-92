@@ -56,7 +56,7 @@ class forward_kin:
         # ... update the message header, then ...
         message.header = Header()
         message.header.stamp = rospy.Time.now()
-        message.header.frame_id = "message"
+        message.header.frame_id = "base_link"
         # ... publish the message using self.twist_publisher
         self.twist_publisher.publish(message)
         """ 

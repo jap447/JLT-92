@@ -78,9 +78,17 @@ The ground truth lags behind the command and doesn't demonstrate the higher freq
 
 **Q4.3:** 
 
+First case: when holding the rover off the ground, the entire 3D view moves around the frame since the odometer thinks the rover is moving spatially when it is not. 
+
+Second case: the odometer senses that one wheel is not turning but there still exists an angular velocity so all lidar sensed points rotate as if the robot was spinning in place.
+
+Third case: Similar to when held off the ground, when running into the wall the rover believes it to be moving forward but with more variation in scene determination due to the lidar's range capabilities and violation of the no-slip condition when the rover stalls. 
+
 
 ## Feedback
 
 **How much time did you spend on this assignment?** 
+7 hours
 
 **Do you have any feedback for this assignment?**
+Some documentation was confusing but not too bad

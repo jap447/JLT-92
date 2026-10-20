@@ -24,6 +24,7 @@ class odometry:
         QUESTION 4.2 BEGINS
         """
         # create a TransformBroadcaster once so it can be reused in the callback
+        self.transform_broadcaster = tf.TransformBroadcaster()
 
         """
         QUESTION 4.2 ENDS
@@ -66,18 +67,29 @@ class odometry:
         # This function just performs a single integration step, so you can assume that the rover is moving at a constant velocity during this time step
 
         # set the twist in the self.odometry_msg, then ...
-
+        self.odometry_msg.twist.twist = self.last_twist
         # ... update the pose orientation, then ...
         # HINT: you can use tf.transformations.euler_from_quaternion and 
         #       tf.transformations.quaternion_from_euler to convert between euler angles and quaternions
+        temp_orientation = self.odometry_msg.pose.pose.orientation
+        roll, pitch, yaw = tf.transformations.euler_from_quaternion([temp_orientation.x,temp_orientation.y,temp_orientation.z, temp_orientation.w])
+        yaw_estimated = yaw + angular_velocity*dt # check here for wrap around?
 
+        temp_quaterion = tf.transformations.quaternion_from_euler(roll, pitch, yaw_estimated)
+        self.odometry_msg.pose.pose.orientation = Quaternion(*temp_quaterion)
         # ... update the pose position, then ...
         # HINT: you SHOULDN'T assume the angle is constant during the integration step.
         #       so you should use the current yaw angle plus half of the angular velocity times dt (the heading at the middle of the step) to calculate the change in x and y position
-
+        halfway_yaw = yaw + angular_velocity*dt/2
+        
+        
+        self.odometry_msg.pose.pose.position.x += linear_velocity * math.cos(halfway_yaw)*dt
+        self.odometry_msg.pose.pose.position.y += linear_velocity * math.sin(halfway_yaw)*dt
         # ... update the message header, then ...
+        self.odometry_msg.header.stamp = msg.header.stamp
 
         # ... publish the message
+        self.odometry_publisher.publish(self.odometry_msg)
 
 
         """ 
@@ -91,7 +103,12 @@ class odometry:
 
         # use the TransformBroadcaster from __init__ to  broadcast a transform from "odom" to "base_link"
         # HINT: you can use tf.TransformBroadcaster.sendTransform to send the transform
-        
+        self.transform_broadcaster = tf.TransformBroadcaster()
+        self.transform_broadcaster.sendTransform((self.odometry_msg.pose.pose.position.x, self.odometry_msg.pose.pose.position.y, self.odometry_msg.pose.pose.position.z),
+            tf.transformations.quaternion_from_euler(roll, pitch, yaw_estimated),
+            msg.header.stamp,
+            self.odometry_msg.child_frame_id,
+            self.odometry_msg.header.frame_id)
 
         """
         QUESTION 4.2 ENDS
