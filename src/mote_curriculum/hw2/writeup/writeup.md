@@ -63,9 +63,10 @@ $$\boxed{\omega = \frac{v_r - v_l}{b}}$$
 ## Q2. Inverse Kinematics (20 pts)
 
 **Q2.2:** 
+![alt text](../images/Q2_2_plots.png)
 
 **Q2.3:** 
-
+We see a systematic difference in the two graphs where the predicted velocity is almost always consistently higher than the actual velocity. This makes intuituive sense as the robot is slipping on the carpet which violates the no-slip condition and means it moves slower than predicted (in that moment it's not using the traction to push itself forward and is only relying on inertia which means there's only deceleration from primarily frictional losses). We also see a lag effect where the jumps in the actual velocity is lagging behind the predicted velocity, likely due to time in transmission of the signals. 
 ## Q3. Forward Kinematics (20 pts)
 
 **Q3.2:** 
