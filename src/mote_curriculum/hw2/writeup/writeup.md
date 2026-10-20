@@ -92,3 +92,6 @@ Third case: Similar to when held off the ground, when running into the wall the 
 
 **Do you have any feedback for this assignment?**
 Some documentation was confusing but not too bad
+
+**AI Disclaimer:**
+Used AI for error debugging related to stale topics, and to aid understanding of the nested fields in the documentation. 
