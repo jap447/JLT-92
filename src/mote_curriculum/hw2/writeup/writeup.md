@@ -70,6 +70,9 @@ We see a systematic difference in the two graphs where the predicted velocity is
 ## Q3. Forward Kinematics (20 pts)
 
 **Q3.2:** 
+![alt text](../images/Q3_2_plots.png)
+
+The ground truth lags behind the command and doesn't demonstrate the higher frequency commands when quickly going back and forth. Both of these follow intuition as it takes time bwteen when the command and given and when the gorund truth is recorded. Also the intertia and time delay means the robot can't instantly respond to quickly varying commands. 
 
 ## Q4. Calculating an Odometry Solution (30 pts)
 
