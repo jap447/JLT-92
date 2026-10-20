@@ -45,12 +45,17 @@ class inv_kin:
         QUESTION 2.1 BEGINS
         """
         # calculate v_left and v_right (in rad/s, not m/s!), then ...
+        v_left = (linear_velocity - (WHEEL_SEPARATION * angular_velocity) / 2) / (WHEEL_DIAMETER / 2)
+        v_right = (linear_velocity + (WHEEL_SEPARATION * angular_velocity) / 2) / (WHEEL_DIAMETER / 2)
 
         # ... update self.joint_states.velocity in [left, right] order, then ...
+        self.joint_states.velocity = [v_left, v_right]
 
         # ... update the header (see header in __init__), then ...
+        self.joint_states.header.stamp = rospy.Time.now()
 
         # ... publish the message using self.joint_state_publisher
+        self.joint_state_publisher.publish(self.joint_states)
         """ 
         QUESTION 2.1 ENDS
         """
