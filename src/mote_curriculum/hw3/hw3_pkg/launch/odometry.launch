@@ -1,0 +1,36 @@
+<launch>
+  <!-- Standalone HW2 dead reckoning on the HW3 map.
+       Stop other robot/visualization launches, AMCL, and the particle filter
+       before starting this launch so each TF transform has one publisher.
+       Start the stationary robot at the map pose specified by x, y, and yaw.
+       Foxglove's /initialpose tool does not reset the HW2 odometry node. -->
+  <arg name="robot_ip" default="$(optenv ROBOT_IP '')"/>
+  <arg name="map_file" default="$(find hw3_pkg)/maps/mote_arena.yaml"/>
+  
+  <!-- CHANGE THIS TO BE YOUR ROBOTS STARTING POSITION (you can do this in the command line as shown in the README) -->
+  <arg name="x" default="0.0" doc="Starting map x coordinate in meters"/>
+  <arg name="y" default="0.0" doc="Starting map y coordinate in meters"/>
+  <arg name="yaw" default="0.0" doc="Starting map heading in radians"/>
+
+  <include file="$(find mote_demos)/launch/simple_teleop_viz.launch">
+    <arg name="robot_ip" value="$(arg robot_ip)"/>
+  </include>
+
+  <!-- Override controller configuration after the include. Roslaunch uploads
+       all parameters before starting nodes, so the controller starts with its
+       odometry TF disabled. HW2 odometry owns odom -> base_link instead. -->
+  <param name="/diff_drive_controller/enable_odom_tf" type="bool" value="false"/>
+
+  <node pkg="map_server" type="map_server" name="map_server"
+        args="&quot;$(arg map_file)&quot;" output="screen"/>
+
+  <node pkg="hw2_pkg" type="forward_kinematics.py" name="forward_kin"
+        output="screen"/>
+  <node pkg="hw2_pkg" type="odometry.py" name="odometry"
+        output="screen"/>
+
+  <!-- Fixed alignment preserves visible dead-reckoning drift.
+       Arguments: x y z yaw pitch roll parent child period_ms. -->
+  <node pkg="tf" type="static_transform_publisher" name="odometry_map_alignment"
+        args="$(arg x) $(arg y) 0 $(arg yaw) 0 0 map odom 100"/>
+</launch>
