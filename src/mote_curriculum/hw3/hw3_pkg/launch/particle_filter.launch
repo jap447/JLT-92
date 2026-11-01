@@ -2,9 +2,9 @@
 
     <include file="$(find mote_base)/launch/mote.launch">
         <!-- QUESTION 0.1 BEGINS -->
-        <arg name="gyro_bias_x" value="0.0"/>
-        <arg name="gyro_bias_y" value="0.0"/>
-        <arg name="gyro_bias_z" value="0.0"/>
+        <arg name="gyro_bias_x" value="0.015"/>
+        <arg name="gyro_bias_y" value="-0.010"/>
+        <arg name="gyro_bias_z" value="0.039"/>
         <!-- QUESTION 0.1 ENDS -->
     </include>
 

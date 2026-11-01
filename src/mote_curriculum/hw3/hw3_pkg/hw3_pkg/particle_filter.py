@@ -52,6 +52,15 @@ class particle_filter:
             return 0.0
 
         # QUESTION 1.1 BEGINS
+        valid_indices = np.isfinite(measurement) & np.isfinite(ground_truth)
+        m = measurement[valid_indices]
+        g = ground_truth[valid_indices]
+
+        likelihoods = stats.norm.pdf(m,g,std_dev)
+
+        probability = np.prod(likelihoods)
+
+        return probability
 
         # QUESTION 1.1 ENDS
 
@@ -68,7 +77,22 @@ class particle_filter:
         """
 
         # QUESTION 1.2 BEGINS
+        M = len(self.particles)
+        r = self.rng.uniform(0, 1/M)
+        c = self.weights[0]
+        i = 0
+        X = np.zeros_like(self.particles)
+        for m in range(M):
+            U = r+(m)/M # since range(M) starts at 0
 
+            while U > c:
+                i += 1
+                c += self.weights[i]
+
+            X[m] = self.particles[i]
+
+        self.particles[:] = X
+        self.weights[:] = 1/M
         # QUESTION 1.2 ENDS
         pass
 

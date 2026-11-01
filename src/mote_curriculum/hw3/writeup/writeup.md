@@ -37,9 +37,16 @@ Tuned gyro:
 ## AI usage (-12 pts if incomplete)
 **Did you use AI for this assignment? If so, how was it used? Eiher state "no AI was used" or explain *how* it was used. Failure to complete this section will result in 10% of your grade being lost**
 
+* Used AI (GPT-6) to clean up Q1.1 code (specifically, implement np.prod rather than coding the product)
+
+* Used Ai (GPT-6) to debug modifying the arrays in place
+
+
 ## Feedback
 
 **How much time did you spend on this assignment?** 
+Q0-1: 2h (had some trouble connecting to the robot, otherwise 1h)
+Q2: 0.5h
 
 **Do you have any feedback for this assignment?**
 
