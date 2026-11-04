@@ -34,6 +34,22 @@ Tuned gyro:
 
 **How did the odometry only localization compare to the particle filter? Why would we expect the particle filter to perform better?**
 
+The odometry only performed much worse. It overestimated distance and was particularly unreliable on turns. In the images attached, the error accumulation reached a point where the odometry thought the robot was multiple hexagons away from the actual location. In contrast to the particle filter which is constantly using the environmental observations, the odometry only locatization is only using the encoders and is suspectible to wheel slippage. 
+
+We expect the particle filter to perform better because error doesn't stack in the same way, because there's a consideration of uncertainty built into the localization. Just like in class when we saw the particles grow in length on a long corridor, it's applying kinematics to each of the particles and so accordingly it's able to readjust itself according to the environmental features instead of assuming that the encoder is correct.
+
+![](./PXL_20261104_224517243.jpg)
+Picture of actual location
+
+![](./Screenshot%202026-11-04%20174528.png)
+Screenshot of odometry only location
+
+![](./Screenshot%202026-11-04%20180603.png)
+Screenshot of moving uncertainty of particle filter
+
+![](./Screenshot%202026-11-04%20180650.png)
+Screenshot of particle filter location
+
 ## AI usage (-12 pts if incomplete)
 **Did you use AI for this assignment? If so, how was it used? Eiher state "no AI was used" or explain *how* it was used. Failure to complete this section will result in 10% of your grade being lost**
 
