@@ -63,6 +63,7 @@ Screenshot of particle filter location
 **How much time did you spend on this assignment?** 
 Q0-1: 2h (had some trouble connecting to the robot, otherwise 1h)
 Q2: 0.5h
+Q3: 1.5h
 
 **Do you have any feedback for this assignment?**
 
