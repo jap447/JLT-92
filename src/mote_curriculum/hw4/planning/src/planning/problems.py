@@ -144,7 +144,8 @@ class R2Problem(PlanarProblem):
         q1_2d = np.atleast_2d(q1)
         q2_2d = np.atleast_2d(q2)
         ### BEGIN QUESTION 1.1 #####################
-        pass
+        distances = np.linalg.norm(q1_2d - q2_2d, axis=1)
+        return distances
         ### END QUESTION 1.1 #######################
     
     def cost_to_go(self, q1, goal):

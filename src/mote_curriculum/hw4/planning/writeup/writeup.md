@@ -4,6 +4,8 @@ Replace this with your own writeup! Please place all figures and answer all ques
 
 **Q0** Assembled battery mount:
 
+![](BatteryMount.png)
+
 **Q1.2** A* Shortest Path Figure: 
 
 ![](Q1.2.png)
