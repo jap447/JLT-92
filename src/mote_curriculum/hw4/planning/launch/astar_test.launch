@@ -1,0 +1,32 @@
+<launch>
+  <arg name="map_file" default="$(find planning)/maps/mote_arena.yaml"/>
+  <arg name="num_vertices" default="1000"/>
+  <arg name="sampler" default="halton"/>
+  <arg name="dubins" default="false"/>
+  <!-- Map cells; Dubins connections include distance needed to change heading. -->
+  <arg name="connection_radius" default="30.0"/>
+  <!-- Maximum curvature in inverse meters; only used when dubins is true. -->
+  <arg name="curvature" default="3.0"/>
+  <arg name="cache_dir" default="$(env HOME)/.ros/planning/roadmaps"/>
+  <arg name="use_disk_cache" default="true"/>
+  <arg name="show_roadmap" default="true"/>
+  <!-- Display spacing in meters; collision checking retains its own resolution. -->
+  <arg name="roadmap_display_resolution" default="0.05"/>
+
+  <node pkg="map_server" type="map_server" name="map_server"
+        args="$(arg map_file)" output="screen"/>
+
+  <include file="$(find mote_viz)/launch/viz.launch"/>
+
+  <node pkg="planning" type="astar_node.py" name="astar" output="screen">
+    <param name="num_vertices" type="int" value="$(arg num_vertices)"/>
+    <param name="connection_radius" type="double" value="$(arg connection_radius)"/>
+    <param name="sampler" value="$(arg sampler)"/>
+    <param name="dubins" type="bool" value="$(arg dubins)"/>
+    <param name="curvature" type="double" value="$(arg curvature)"/>
+    <param name="cache_dir" value="$(arg cache_dir)"/>
+    <param name="use_disk_cache" type="bool" value="$(arg use_disk_cache)"/>
+    <param name="show_roadmap" type="bool" value="$(arg show_roadmap)"/>
+    <param name="roadmap_display_resolution" type="double" value="$(arg roadmap_display_resolution)"/>
+  </node>
+</launch>

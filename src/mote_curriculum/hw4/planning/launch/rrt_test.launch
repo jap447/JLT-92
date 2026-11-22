@@ -1,0 +1,10 @@
+<launch>
+  <arg name="map_file" default="$(find planning)/maps/mote_arena.yaml"/>
+
+  <node pkg="map_server" type="map_server" name="map_server"
+        args="$(arg map_file)" output="screen"/>
+
+  <include file="$(find mote_viz)/launch/viz.launch"/>
+
+  <node pkg="planning" type="rrt_node.py" name="rrt" output="screen"/>
+</launch>
