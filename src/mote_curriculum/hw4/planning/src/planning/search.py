@@ -93,7 +93,15 @@ class ASTARPlanner(object):
                 # - h contains the heuristic value for the current neighbor. Can you use this to compute the neighbor’s f-value?
                 
                 ### BEGIN QUESTION 1.2 #####################
-                pass
+                if expanded[neighbor]:
+                    continue
+
+                cost_to_come = entry.cost_to_come + weight
+                f_value = cost_to_come + h
+
+                queue.push(
+                    QueueEntry(f_value, next(c), neighbor, entry.node, cost_to_come)
+                )
                 ### END QUESTION 1.2 #####################
         raise nx.NetworkXNoPath("Node {} not reachable from {}".format(goal, start))
 
@@ -110,7 +118,15 @@ class ASTARPlanner(object):
         """
         # Follow the parents of the node until a NULL entry is reached
         ### BEGIN QUESTION 1.2 ##################### 
-        pass
+        path = []
+        node = goal
+
+        while node != NULL:
+            path.append(node)
+            node = parents[node]
+
+        path.reverse()
+        return path
         ### END QUESTION 1.2 #####################
 
 
@@ -192,7 +208,29 @@ class RRTPlanner(object):
                 - If distance to goal (calculated using self.prob.compute_distance_rrt) is less than epsilon threshold, 
                   stop iterations and set goal_id
                 '''
-                pass
+                near_id, x_near = self.tree.GetNearestVertex(x_rand)
+                x_new = self.extend(x_near, x_rand)
+                if x_new is None:
+                    continue
+
+                new_id = self.tree.AddVertex(x_new)
+                self.tree.AddEdge(near_id, new_id)
+                new_eid.append(new_id)
+
+                if self.prob.compute_distance_rrt(x_new, self.end) >= epsilon:
+                    continue
+
+                if np.array_equal(x_new, self.end):
+                    goal_id = new_id
+                elif self.prob.check_edge_validity(x_new, self.end):
+                    goal_id = self.tree.AddVertex(self.end)
+                    self.tree.AddEdge(new_id, goal_id)
+                    new_eid.append(goal_id)
+                else:
+                    continue
+
+                found = True
+                break
                 ### END QUESTION 2.1 #######################
 
             if isinstance(self.prob, problems.R2Problem) and self.show_tree:
@@ -299,7 +337,9 @@ class RRTPlanner(object):
         - Finally, how would you express the desired point x_new in terms of x_near and the (properly-scaled) vector v?
         '''
         ### BEGIN QUESTION 2.1 #####################
-        pass
+        x_new = x_near + self.eta * (x_rand - x_near)
+        if self.prob.check_edge_validity(x_near, x_new):
+            return x_new
         ### END QUESTION 2.1 #######################
         self.collision += 1
         return None
@@ -320,7 +360,26 @@ class RRTPlanner(object):
               The function will return True if collision free.
         '''
         ### BEGIN QUESTION 2.2 ####
-        pass
+        if len(path) <= 2:
+            return path.copy()
+
+        kept = [0]
+        current = 0
+
+        while current < len(path) - 1:
+            next_index = current + 1
+
+            for candidate in range(len(path) - 1, next_index, -1):
+                if self.prob.check_edge_validity(
+                    path[current:current + 1], path[candidate:candidate + 1]
+                ):
+                    next_index = candidate
+                    break
+
+            kept.append(next_index)
+            current = next_index
+
+        return path[kept]
         ### END QUESTION 2.2 ###########################
         
 

@@ -8,11 +8,11 @@ Replace this with your own writeup! Please place all figures and answer all ques
 
 **Q1.2** A* Shortest Path Figure: 
 
-![](Q1.2.png)
+![](astar.png)
 
 **Q2.1** RRT Path Figure: ...
 
-![](Q2.1.png)
+![](rrt_map1.png)
 
 **Q3**
 
@@ -42,6 +42,12 @@ Q4.3
 
 ## AI usage (-8 pts if incomplete)
 **Did you use AI for this assignment? If so, how was it used? Eiher state "no AI was used" or explain *how* it was used. Failure to complete this section will result in 10% of your grade being lost**
+
+For Question 1.2, the context of available variables and the basic A* logic from class was provided to create the code snippets using GPT 6.2 Sol. 
+
+For Question 2.1, the context of available variables and the RRT logic from class was provided to create the code snippets using GPT 6.2 Sol.
+
+For Question 2.2, the context of the variables and the context of needing a shortcut algorithm that tries to connect nodes to shorten the path for postprocessing was provided to create the code snippets using GPT 6.2 Sol.
 
 ## Feedback
 
