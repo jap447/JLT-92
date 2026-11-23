@@ -225,7 +225,8 @@ class SE2Problem(PlanarProblem):
         q2_2d = np.atleast_2d(q2)
         ### BEGIN QUESTION 4.1 #####################
         ### Hint: try to make use of dubins.path_length()
-        pass
+        lengths = dubins.path_length(q1_2d, q2_2d, self.curvature)
+        return lengths
         ### END QUESTION 4.1 #######################
 
     def cost_to_go(self, q1, goal):
