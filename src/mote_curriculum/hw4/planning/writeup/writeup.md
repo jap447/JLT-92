@@ -16,21 +16,20 @@ Replace this with your own writeup! Please place all figures and answer all ques
 
 **Q3**
 
-A* beats RRT Figure: ...
+A* beats RRT Figure:
 
-![](astar_winner.png)
+![](astar_beats_rrt.png)
 
 A* is better than RRT because ...
 
 
 
-RRT beats A* Figure: ...
+RRT beats A* Figure:
 
-![](rrt_winner.png)
+![](rrt_beats_astar.png)
+![](rrt_beats_astar.gif)
 
-RRT is better than A* because ...
-
-
+RRT is better than A* because A* can only find paths that exist on its precomputed roadmap. A*'s roadmap has fixed sample spacing and connection radius, so gaps that do not fall within the vertices of its roadmap are not captured, making it impossible for A* to find a path from the starting point to the end point, even though it can use these gaps/openings. RRT, however, does not fall into this trap. It samples anywhere while it plans, so it only needs to get lucky once to find an opening that leads to a feasible path between the start and end points. The tradeoff is that RRT's path can be pretty bad (ours wanders a lot before reaching the end goal), and how long it takes depends on the random samples.
 **Q4**
 
 Q4.2
