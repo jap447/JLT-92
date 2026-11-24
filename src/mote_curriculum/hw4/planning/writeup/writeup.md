@@ -35,6 +35,8 @@ RRT is better than A* because A* can only find paths that exist on its precomput
 Q4.2
 ![](cant_path_astar_foxglove.png)
 
+In this case, A* likely fails to find a path due to the heading constraint imposed on the goal, and the Dubins model constraint. From the image, we can see that the heading for the goal is away from the wall in the map, but if we imagine the path A* may output, it would likely reach the goal with a heading into the obstable. This would be valid if the robot could turn in place, but the Dubins model imposes a minimun turning radius, and thus, without enough space, the planner cannot find a valid path for this set of initial conditions and end goal without running into any obstacles.
+
 Q4.3
 ![](multiple_plots_foxglove.png)
 
