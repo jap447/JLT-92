@@ -20,7 +20,7 @@ A* beats RRT Figure:
 
 ![](astar_beats_rrt.png)
 
-A* is better than RRT because ...
+A* is better than RRT because its ability to precompute a roadmap serves well when the optimal path lies within its fixed sample spacing and connection radius. If this happens to be the case, then it's able to compute an optimal path efficiently. This is exactly what happens with this map we've given both A* and RRT. The narrow corridors line up with the vertices of A*'s roadmap, leading to a connected path. RRT, on the other hand, performs poorly with this map because of it's random sampling approach. By consistently choosing paths at random, it is more likely to go towards the open space on the right side of the map, which eventually leads to a dead end. Furthermore, the probability of RRT consistenly choosing the path within the narrow corridors **at random** is low, especially within the specified time frame. The tradeoff is that A* needs this roadmap computed ahead of time, which is slow, and only works in this instance because the roadmap covers the corridors.
 
 
 
